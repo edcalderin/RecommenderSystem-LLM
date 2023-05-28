@@ -47,7 +47,7 @@ jobs:
       run: docker build -t {{env.DOCKER_IMAGE}} .
 
     - name: Tagging Image
-      run: docker tag ${{env.DOCKER_IMAGE}}:latest {{env.DOCKER_REPOSITORY}}:latest
+      run: docker tag $DOCKER_IMAGE:latest $DOCKER_REPOSITORY:latest
 
     - name: Pushing image
-      run: docker push ${{env.DOCKER_REPOSITORY}}:latest
+      run: docker push $DOCKER_REPOSITORY:latest
