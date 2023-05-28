@@ -27,6 +27,9 @@ jobs:
   continuous-deployment:
     runs-on: ubuntu-latest
     needs: [continuous-integration]
+    env:
+      DOCKER_IMAGE: ${{envs.DOCKER_IMAGE}}
+      DOCKER_REPOSITORY: ${{envs.DOCKER_REPOSITORY}}
     if: github.ref == 'refs/heads/master'
     steps:
 
@@ -44,7 +47,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Creating Docker Image
-      run: docker build -t recommender-llm-repo .
+      run: docker build -t $DOCKER_IMAGE .
 
     - name: Tagging Image
       run: docker tag $DOCKER_IMAGE:latest $DOCKER_REPOSITORY:latest

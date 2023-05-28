@@ -8,6 +8,7 @@ WORKDIR /opt/recommender-api
 COPY requirements/common.txt requirements/common.txt
 COPY requirements/requirements.txt requirements/requirements.txt
 
+RUN pip install --upgrade pip
 RUN pip install --no-cache-dir --user -r requirements/requirements.txt
 
 COPY . .
