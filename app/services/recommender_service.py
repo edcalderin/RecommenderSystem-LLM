@@ -1,13 +1,14 @@
-from fastapi import Request
-import pandas as pd
-from sentence_transformers import util
 from typing import List
-from schemas import Recommendation
-from utils.helper import load_data
+
+import pandas as pd
 from config.core import APP_ROOT, params
+from fastapi import Request
+from schemas import Recommendation
+from sentence_transformers import util
+from utils.helper import load_data
 
 
-def get_recommendations(id_user: int, request: Request, num = 5) -> List[Recommendation]:
+def get_recommendations(id_user: int, request: Request, num=5) -> List[Recommendation]:
     """
     Function to return a list job recommendations according to a single user.
     Parameters

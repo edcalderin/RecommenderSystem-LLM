@@ -1,7 +1,7 @@
 from sentence_transformers import SentenceTransformer
-
-from .core import params, APP_ROOT
 from utils.helper import load_data, try_gpu
+
+from .core import APP_ROOT, params
 
 
 def load_model() -> SentenceTransformer:

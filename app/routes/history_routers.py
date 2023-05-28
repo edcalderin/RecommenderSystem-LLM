@@ -1,7 +1,7 @@
-from fastapi import APIRouter
 from typing import List
 
 from controllers import history_controller
+from fastapi import APIRouter
 from schemas import RecommendationResponse
 
 history_router = APIRouter()

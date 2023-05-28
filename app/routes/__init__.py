@@ -1,8 +1,8 @@
 from fastapi import APIRouter
 
-from .root_routers import root_router
-from .recommender_routers import recommender_router
 from .history_routers import history_router
+from .recommender_routers import recommender_router
+from .root_routers import root_router
 
 router = APIRouter()
 

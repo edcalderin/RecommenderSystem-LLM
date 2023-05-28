@@ -1,12 +1,12 @@
 from datetime import datetime
-import pandas as pd
 from pathlib import Path
-from pymongo.cursor import Cursor
-import pytz
-import torch
 from typing import List
 
+import pandas as pd
+import pytz
+import torch
 from config.core import params
+from pymongo.cursor import Cursor
 from schemas import RecommendationResponse
 
 

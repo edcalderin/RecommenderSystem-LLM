@@ -1,5 +1,5 @@
-from fastapi import APIRouter, Request
 from controllers import recommendation_controller
+from fastapi import APIRouter, Request
 from schemas import RecommendationResponse
 
 recommender_router = APIRouter()

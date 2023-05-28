@@ -1,9 +1,10 @@
-import pymongo
 from typing import List
 
-from .database import history_collection
+import pymongo
 from schemas import RecommendationResponse
 from utils.helper import parse_to_response
+
+from .database import history_collection
 
 
 def insert_history(response: RecommendationResponse) -> None:

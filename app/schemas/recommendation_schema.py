@@ -1,5 +1,7 @@
-from pydantic import BaseModel
 from typing import List, Optional
+
+from pydantic import BaseModel
+
 
 class Recommendation(BaseModel):
     match_score: float
@@ -11,6 +13,7 @@ class Recommendation(BaseModel):
     remote: bool
     vacancy_name: str
     description: str
+
 
 class RecommendationResponse(BaseModel):
     id_user: int

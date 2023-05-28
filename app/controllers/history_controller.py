@@ -1,7 +1,7 @@
-from fastapi import HTTPException, status
-from loguru import logger
 from typing import List
 
+from fastapi import HTTPException, status
+from loguru import logger
 from schemas import RecommendationResponse
 from services import history_service
 

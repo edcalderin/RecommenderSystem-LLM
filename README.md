@@ -20,13 +20,13 @@ Despite the fact it is not possible to evaluate results with classic metrics, I 
 ### With tox
  1. Run `pip install -u tox`. It is not a project dependency but required to execute commands locally. See link in References section for further information.
  2. Run `tox -e run_app`
- 3. Go to `https://127.0.0.1/` (Welcome endpoint)
+ 3. Go to `https://127.0.0.1/:8000` (Welcome endpoint)
 
 ### With Docker
  1. Rename `env.env` file to `.env`
  2. Run `docker-compose build`
  3. Run `docker-compose up`
- 4. Go to `https://127.0.0.1/` (Welcome endpoint)
+ 4. Go to `https://127.0.0.1:8000/` (Welcome endpoint)
 
 In both cases, be patient at the first time if you are running on CPU since it will download the model and generate the embeddings.
 

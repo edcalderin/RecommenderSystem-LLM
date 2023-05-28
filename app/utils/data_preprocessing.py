@@ -1,6 +1,6 @@
-import pandas as pd
 import numpy as np
-from config.core import params, APP_ROOT
+import pandas as pd
+from config.core import APP_ROOT, params
 from utils.helper import load_data
 
 
