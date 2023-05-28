@@ -1,12 +1,9 @@
 name: Recommender CI/CD Pipeline
 
 on:
-  pull_request:
-    branches:
-    - master
-    paths:
-    - app/**
-    - tests/**
+  push:
+    branches-ignore:
+    - main
 
 jobs:
   continuous-integration:
