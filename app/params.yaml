@@ -1,0 +1,19 @@
+app_name: Recommender System with LLM API
+sentence_transformer:
+  model_name: sentence-transformers/all-MiniLM-L6-v2
+data:
+  raw:
+    users: data/raw/users.csv
+    jobs: data/raw/jobs.csv
+  processed:
+    users: data/processed/users.csv
+    jobs: data/processed/jobs.csv
+timezone: America/Bogota
+features_na:
+  users:
+  - hardskills
+  - subareas
+  jobs:
+  - area
+  - country
+  - work_modality

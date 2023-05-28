@@ -1,0 +1,17 @@
+######
+.tox
+tox.ini
+
+######
+__pycache__
+data/processed/*
+notebooks
+tests
+
+######
+.gitignore
+.git
+.github
+
+######
+README.md
