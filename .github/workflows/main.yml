@@ -44,7 +44,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Creating Docker Image
-      run: docker build -t $DOCKER_IMAGE .
+      run: docker build . -t $DOCKER_IMAGE
 
     - name: Tagging Image
       run: docker tag $DOCKER_IMAGE:latest $DOCKER_REPOSITORY:latest
