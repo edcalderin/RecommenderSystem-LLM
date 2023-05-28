@@ -23,6 +23,10 @@ The system has two available endpoints:
 ## Steps to reproduce locally
 
 ### With tox
+ 1. Create a new environment:
+
+    `python3 -m venv venv`  
+    `source venv/bin/activate`
  1. Run `pip install -u tox`. It is not a project dependency but required to execute commands locally. See link in References section for further information.
  2. Run `tox -e run_app`
  3. Go to `https://127.0.0.1/:8000` (Welcome endpoint)
