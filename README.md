@@ -3,7 +3,7 @@ Recommender System with Large Language Models (LLM)
 
 ## Arquitecture
 
-This recommender system uses SentenceTransformer model (https://huggingface.co/sentence-transformers) to achieve embedding the
+This recommender system uses SentenceTransformer model to achieve embedding the
 preprocessed prompts. 
 In order to upgrade or deploy the system with new jobs data just replace the current dataframe with the new one containing new rows, then re-run the app for generating new job embeddings based on its prompt. This approach is literally the same as the user's dataset.
 
@@ -14,6 +14,11 @@ The ideal scenario would consist of storing those datasets into an external stor
 Firstly, I researched among different available LLM models but some of them are not free-to-use and need a good accelerated processing memory (CUDA GPU), having that said I ended up using SentenceTransformer which provided the necessary tools to create a stable recommender system, moreover it has a built-in function to calculate cosine similarity between two tensors which gave me more benefits. Since then, I was not exempt of long waits but it was the better option considering my computational limitation. In fact, I intended to use Transformers as these are more complete tools however I came across with allocation-memory errors by generating embedding for the jobs dataset.
 
 Despite the fact it is not possible to evaluate results with classic metrics, I could notice a correlation between the user profile and the recommended jobs which take to conclude that SentenceTransformer carried out this task well but it could get better by creating a more descriptive prompt or including more features on it.
+
+## API
+The system has two available endpoints:
+* `/api/v1/recommend/:id_user`: This one will allow you create a list of job recommendatios by id user
+* `/api/v1/history/?id_user=:id_user`: To return all previous recommendations or by user id. You must keep in mind that this endopoint can return one or many recommendations sorted recently, this is useful when the jobs dataset is upgraded and need to inspect how the results evolved accordingly.
 
 ## Steps to reproduce locally
 
