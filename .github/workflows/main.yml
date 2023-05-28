@@ -45,10 +45,10 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Creating Docker Image
-      run: docker build -t {{envs.DOCKER_IMAGE}} .
+      run: docker build -t {{env.DOCKER_IMAGE}} .
 
     - name: Tagging Image
-      run: docker tag ${{envs.DOCKER_IMAGE}}:latest {{envs.DOCKER_REPOSITORY}}:latest
+      run: docker tag ${{env.DOCKER_IMAGE}}:latest {{env.DOCKER_REPOSITORY}}:latest
 
     - name: Pushing image
-      run: docker push ${{envs.DOCKER_REPOSITORY}}:latest
+      run: docker push ${{env.DOCKER_REPOSITORY}}:latest
