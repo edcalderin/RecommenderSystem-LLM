@@ -4,6 +4,7 @@ tox.ini
 
 ######
 __pycache__
+.pytest_cache
 data/processed/*
 notebooks
 tests
