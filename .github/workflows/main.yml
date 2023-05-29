@@ -22,11 +22,8 @@ jobs:
         pip install --upgrade pip
         pip install --user tox
 
-    - name: Run Tox without recreating env
-      run: tox --notest
-
-    - name: Run test_app and lint environments
-      run: tox -e test_app,lint
+    - name: Run tests and lint
+      run: tox
 
   continuous-deployment:
     runs-on: ubuntu-latest
