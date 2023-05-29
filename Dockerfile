@@ -11,11 +11,11 @@ RUN chown -R new_user:new_user ./
 USER new_user
 
 ENV PATH /home/new_user/.local/bin:$PATH
-ENV PATH /usr/local/bin:$PATH
+ENV PYTHONPATH /usr/local/bin:$PYTHONPATH
 
 COPY requirements/requirements.txt requirements/requirements.txt
 
-RUN /usr/local/bin/python -m pip install --upgrade pip
+RUN python -m pip install --upgrade pip
 RUN pip install --no-cache-dir --user -r requirements/requirements.txt
 
 COPY . .
