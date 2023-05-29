@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir --user -r requirements/requirements.txt
 
 USER LLM_user
 
-ENV PATH="/home/myuser/.local/bin:${PATH}"
+ENV PATH="/home/LLM_user/.local/bin:${PATH}"
 
 COPY . .
 
