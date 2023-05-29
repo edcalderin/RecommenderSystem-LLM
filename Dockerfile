@@ -6,6 +6,11 @@ RUN adduser --disabled-password --gecos '' recom-user
 
 WORKDIR /opt/recommender-api
 
+RUN chown -R recom-user:recom-user ./
+
+USER recom-user
+
+
 COPY requirements/requirements.txt requirements/requirements.txt
 
 
@@ -14,9 +19,5 @@ RUN pip install --no-cache-dir --user -r requirements/requirements.txt
 
 COPY . .
 
-RUN chmod +x /opt/recommender-api/run.sh
-RUN chown -R recom-user:recom-user ./
-
-USER recom-user
 
 CMD ["python", "app/main.py"]
