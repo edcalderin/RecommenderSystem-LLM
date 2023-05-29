@@ -23,7 +23,7 @@ jobs:
         pip install --user tox
 
     - name: Run tests and lint
-      run: tox -e test_app, lint
+      run: tox -e test_app,lint
 
   continuous-deployment:
     runs-on: ubuntu-latest
