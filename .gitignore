@@ -1,5 +1,4 @@
 .tox
 __pycache__
 rs-env
-data
 .pytest_cache
