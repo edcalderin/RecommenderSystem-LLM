@@ -52,4 +52,4 @@ jobs:
       run: docker tag ${{vars.DOCKER_IMAGE}}:latest ${{vars.DOCKER_REPOSITORY}}:latest
 
     - name: Pushing image
-      run: docker push ${vars.DOCKER_REPOSITORY}:latest
+      run: docker push ${{vars.DOCKER_REPOSITORY}}:latest
