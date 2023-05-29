@@ -1,0 +1,1 @@
+from .recommendation_schema import Recommendation, RecommendationResponse
