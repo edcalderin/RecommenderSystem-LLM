@@ -6,7 +6,6 @@ WORKDIR /opt/recommender-api
 
 RUN useradd -m LLM_user
 
-COPY requirements/common.txt requirements/common.txt
 COPY requirements/requirements.txt requirements/requirements.txt
 
 RUN pip install --upgrade pip

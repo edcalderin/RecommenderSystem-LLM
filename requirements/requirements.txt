@@ -1,5 +1,5 @@
--r common.txt
-
+pandas==2.0.1
+numpy==1.24.3
 pyyaml==6.0
 fastapi==0.95.2
 loguru==0.7.0
