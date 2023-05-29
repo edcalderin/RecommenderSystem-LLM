@@ -16,10 +16,14 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: 3.9
+    - name: Install virtual env
+      run: |
+        python3 -m venv venv
+        source venv/bin/activate
+        pip install --upgrade pip
 
     - name: Install tox
       run: |
-        pip install --upgrade pip
         pip install --user tox
 
     - name: Run tests and lint
