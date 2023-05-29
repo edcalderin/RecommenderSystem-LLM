@@ -22,8 +22,12 @@ jobs:
         pip install --upgrade pip
         pip install --user tox
 
-    - name: Run tests and lint
-      run: tox -e test_app,lint
+    - name: Run tests
+      run: tox -e test_app
+    - name: Run lint
+      run: |
+        source .tox/test_app/Scripts/activate
+        tox -e lint
 
   continuous-deployment:
     runs-on: ubuntu-latest
