@@ -2,15 +2,16 @@ FROM python:3.9.7-slim
 
 RUN apt update && apt install --no-install-recommends -y build-essential gcc
 
-RUN adduser --disabled-password --gecos '' recom-user
+RUN adduser --disabled-password --gecos '' new_user
 
 WORKDIR /opt/recommender-api
 
-RUN chown -R recom-user:recom-user ./
+RUN chown -R new_user:new_user ./
 
-USER recom-user
+USER new_user
 
-ENV PATH="${PATH}:/home/recom-user/.local/bin"
+ENV PATH="${PATH}:/home/new_user/.local/bin"
+ENV PYTHONPATH="${PYTHONPATH}:/usr/local/bin"
 
 COPY requirements/requirements.txt requirements/requirements.txt
 
