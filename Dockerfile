@@ -4,8 +4,10 @@ RUN apt update && \
     apt install --no-install-recommends -y build-essential gcc
 
 RUN adduser --disabled-password --gecos '' recommender-user
+USER recommender-user
 
 WORKDIR /opt/recommender-api
+RUN chown -R recommender-user:recommender-user ./
 
 COPY requirements/common.txt requirements/common.txt
 COPY requirements/requirements.txt requirements/requirements.txt
@@ -15,8 +17,6 @@ RUN pip install --no-cache-dir --user -r requirements/requirements.txt
 
 COPY . .
 
-RUN chown -R recommender-user:recommender-user ./
 
-USER recommender-user
 
 CMD ["python", "app/main.py"]
