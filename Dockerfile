@@ -11,7 +11,8 @@ RUN chown -R new_user:new_user ./
 USER new_user
 
 ENV PATH /home/new_user/.local/bin:$PATH
-ENV PYTHONPATH /usr/local/bin:$PYTHONPATH
+
+ENV PYTHONPATH .
 
 COPY requirements/requirements.txt requirements/requirements.txt
 
