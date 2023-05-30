@@ -45,6 +45,15 @@ jobs:
       id: ecr-login
       uses: aws-actions/amazon-ecr-login@v1
 
+    - name: Creating Docker Image
+      run: docker build -t ${{ vars.DOCKER_IMAGE }} .
+
+    - name: Tagging Image
+      run: docker tag ${{vars.DOCKER_IMAGE}}:latest ${{ vars.DOCKER_REPOSITORY }}:latest
+
+    - name: Pushing image
+      run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
+
     - name: SSH to EC2 instance and deploy
       uses: appleboy/ssh-action@master
       with:
@@ -54,4 +63,3 @@ jobs:
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
           docker-compose pull ${{ vars.DOCKER_REPOSITORY }}:latest
-          docker-compose up -d
