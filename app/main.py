@@ -22,11 +22,11 @@ def starting():
     process_data("jobs")
 
     logger.info("Loading model")
-    app.state.model = load_model()
+    #app.state.model = load_model()
     logger.info(f"Model running on {app.state.model.device}")
 
     logger.info("Generating embedding jobs")
-    app.state.embedding_jobs = get_embedding_jobs(app.state.model)
+    #app.state.embedding_jobs = get_embedding_jobs(app.state.model)
 
 
 if __name__ == "__main__":
