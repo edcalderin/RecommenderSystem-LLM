@@ -2,7 +2,6 @@ version: '3.8'
 
 services:
   app:
-    container_name: app
     build: .
     env_file:
       - .env
@@ -13,7 +12,6 @@ services:
 
   mongodb:
     image: mongo:latest
-    container_name: mongodb
     ports:
       - 27017:27017
     volumes:
