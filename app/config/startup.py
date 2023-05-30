@@ -1,5 +1,5 @@
 from sentence_transformers import SentenceTransformer
-from utils.helper import load_data
+from utils.helper import load_data, try_gpu
 
 from .core import APP_ROOT, params
 
@@ -7,7 +7,9 @@ from .core import APP_ROOT, params
 def load_model() -> SentenceTransformer:
     model_name = params["sentence_transformer"]["model_name"]
 
-    return SentenceTransformer(model_name)
+    model = SentenceTransformer(model_name, device=try_gpu())
+
+    return model.to(try_gpu())
 
 
 def get_embedding_jobs(model: SentenceTransformer):
