@@ -55,7 +55,7 @@ jobs:
       run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
 
     - name: Deploy to AWS Fargate
-      uses: aws-actions/ecs-deploy@v1
+      uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         cluster: ${{ vars.CLUSTER_NAME }}
         service: ${{ vars.SERVICE_NAME }}
