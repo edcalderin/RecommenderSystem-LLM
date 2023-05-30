@@ -51,6 +51,6 @@ jobs:
         host: ${{ secrets.INSTANCE_HOST }}
         username: ${{ secrets.INSTANCE_USER }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.INSTANCE_PORT }}
+        port: ${{ vars.INSTANCE_PORT }}
         script: |
           echo "hola"
