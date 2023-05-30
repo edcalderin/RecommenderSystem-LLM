@@ -55,7 +55,7 @@ jobs:
       run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
 
     - name: Downloading task definition
-      run: aws ecs describe-task-definition --task-definition ${{ vars.TASK_DEFINITION_NAME }} > task_definition.json
+      run: aws ecs describe-task-definition --task-definition ${{ vars.TASK_DEFINITION_NAME }} --query taskDefinition > task_definition.json
 
     - name: Fill in the new image ID in the Amazon ECS task definition
       id: task-def
