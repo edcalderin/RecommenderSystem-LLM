@@ -32,7 +32,7 @@ def starting():
 if __name__ == "__main__":
     logger.info("Starting application...")
 
-    server = Server(Config(app, host='0.0.0.0', port=8000, log_level=LOG_LEVEL))
+    server = Server(Config(app, host=envs.HOST, port=envs.PORT, log_level=LOG_LEVEL))
 
     setup_logging()
 
