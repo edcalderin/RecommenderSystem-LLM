@@ -5,5 +5,4 @@ fastapi==0.95.2
 loguru==0.7.0
 pymongo==4.3.3
 sentence-transformers==2.2.2
-torch==2.0.1
 uvicorn==0.22.0

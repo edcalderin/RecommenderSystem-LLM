@@ -1,6 +1,4 @@
-FROM python:3.9.7-slim
-
-RUN apt update && apt install --no-install-recommends -y build-essential gcc
+FROM python:3.9
 
 WORKDIR /opt/recommender-api
 
