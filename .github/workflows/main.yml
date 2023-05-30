@@ -46,10 +46,18 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Creating Docker Image
-      run: docker build -t ${{vars.DOCKER_IMAGE}} .
+      run: docker build -t ${{ vars.DOCKER_IMAGE }} .
 
     - name: Tagging Image
-      run: docker tag ${{vars.DOCKER_IMAGE}}:latest ${{vars.DOCKER_REPOSITORY}}:latest
+      run: docker tag ${{vars.DOCKER_IMAGE}}:latest ${{ vars.DOCKER_REPOSITORY }}:latest
 
     - name: Pushing image
-      run: docker push ${{vars.DOCKER_REPOSITORY}}:latest
+      run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
+
+    - name: Deploy to AWS Fargate
+      uses: aws-actions/ecs-deploy@v1
+      with:
+        cluster: ${{ vars.CLUSTER_NAME }}
+        service: ${{ vars.SERVICE_NAME }}
+        task_definition: ${{ vars.TASK_DEFINITION_NAME }}
+        container_name: ${{ vars.CONTAINER_NAME }}
