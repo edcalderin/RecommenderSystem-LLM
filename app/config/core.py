@@ -24,8 +24,8 @@ class Envs(BaseSettings):
     MONGO_PORT: int = int(os.environ["MONGO_PORT"])
     MONGO_HOST: str = os.environ["MONGO_HOST"]
 
-    HOST: str = os.environ["HOST"]
-    PORT: int = int(os.environ["PORT"])
+    APP_HOST: str = os.environ["APP_HOST"]
+    APP_PORT: int = int(os.environ["APP_PORT"])
 
 
 params = load_params()
