@@ -59,5 +59,5 @@ jobs:
       with:
         cluster: ${{ vars.CLUSTER_NAME }}
         service: ${{ vars.SERVICE_NAME }}
-        task_definition: ${{ vars.TASK_DEFINITION_NAME }}
-        container_name: ${{ vars.CONTAINER_NAME }}
+        task-definition: ${{ vars.TASK_DEFINITION_NAME }}
+        container-name: ${{ vars.CONTAINER_NAME }}
