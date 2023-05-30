@@ -54,10 +54,18 @@ jobs:
     - name: Pushing image
       run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
 
+    - name: Fill in the new image ID in the Amazon ECS task definition
+      id: task-def
+      uses: aws-actions/amazon-ecs-render-task-definition@v1
+      with:
+        task-definition: task-definition.json
+        container-name: ${{vars.CONTAINER_NAME}}
+        image: ${{ vars.DOCKER_IMAGE }}:latest
+
     - name: Deploy to AWS Fargate
       uses: aws-actions/amazon-ecs-deploy-task-definition@v1
       with:
         cluster: ${{ vars.CLUSTER_NAME }}
         service: ${{ vars.SERVICE_NAME }}
-        task-definition: ${{ vars.TASK_DEFINITION_NAME }}
-        container-name: ${{ vars.CONTAINER_NAME }}
+        task-definition: ${{ steps.task-def.outputs.task-definition }}
+        wait-for-service-stability: true
