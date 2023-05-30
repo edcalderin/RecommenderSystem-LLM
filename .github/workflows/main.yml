@@ -53,4 +53,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
-          docker-compose pull ${{ vars.DOCKER_REPOSITORY }}:latest
+          echo "hola"
