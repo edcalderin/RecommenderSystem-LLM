@@ -44,19 +44,3 @@ jobs:
     - name: Login to ECR
       id: ecr-login
       uses: aws-actions/amazon-ecr-login@v1
-
-    - name: SSH to EC2 instance and deploy
-      uses: appleboy/ssh-action@master
-      with:
-        host: ${{ secrets.INSTANCE_HOST }}
-        username: ${{ secrets.INSTANCE_USER }}
-        key: ${{ secrets.SSH_PRIVATE_KEY }}
-        port: ${{ secrets.INSTANCE_PORT }}
-        script: |
-          sudo yum update -y
-          sudo yum install docker -y
-          sudo service docker start
-          sudo usermod -a -G docker ${{ secrets.INSTANCE_USER }}
-
-          aws ecr get-login-password --region us-east-2 | docker login --username AWS --password-stdin 345098143492.dkr.ecr.us-east-2.amazonaws.com
-          docker pull ${{ vars.DOCKER_REPOSITORY }}:latest
