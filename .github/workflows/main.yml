@@ -55,7 +55,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
-          curl -SL https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-aarch64 -o $HOME/.docker/cli-plugins/docker-compose
+          curl -L https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux-aarch64 -o $HOME/.docker/cli-plugins/docker-compose
           sudo chmod +x $HOME/.docker/cli-plugins/docker-compose
           docker-compose pull ${{ vars.DOCKER_REPOSITORY }}:latest
           docker-compose up -d
