@@ -55,4 +55,5 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
-          which docker-compose
+          /usr/local/bin/docker-compose pull ${{ vars.DOCKER_REPOSITORY }}:latest
+          /usr/local/bin/docker-compose up -d
