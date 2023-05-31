@@ -55,5 +55,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
-          /usr/local/bin/docker-compose pull ${{ vars.DOCKER_REPOSITORY }}:latest
-          /usr/local/bin/docker-compose up -d
+          sudo apt update
+          sudo apt install docker-compose
+          docker-compose pull ${{ vars.DOCKER_REPOSITORY }}:latest
+          docker-compose up -d
