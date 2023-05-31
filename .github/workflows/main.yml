@@ -55,4 +55,9 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
+          sudo yum update -y
+          sudo yum install docker -y
+          sudo service docker start
+          sudo usermod -a -G docker ${{ secrets.INSTANCE_USER }}
+
           docker pull ${{ vars.DOCKER_REPOSITORY }}:latest
