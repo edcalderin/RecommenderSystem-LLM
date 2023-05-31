@@ -55,7 +55,7 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
-          curl -L https://github.com/docker/compose/releases/download/2.18.1/docker-compose-`uname -s`-`uname -m` > ~/docker-compose
+          curl -L https://github.com/docker/compose/releases/download/v2.18.1/docker-compose-linux > ~/docker-compose
           chmod +x ~/docker-compose
           sudo mv ~/docker-compose /usr/local/bin/docker-compose
 
