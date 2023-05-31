@@ -50,7 +50,6 @@ jobs:
       with:
         host: ${{ secrets.INSTANCE_HOST }}
         username: ${{ secrets.INSTANCE_USER }}
-        password: ${{ secrets.INSTANCE_PASS }}
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ vars.INSTANCE_PORT }}
         script: |
