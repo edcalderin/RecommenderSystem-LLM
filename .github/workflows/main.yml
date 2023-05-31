@@ -44,3 +44,12 @@ jobs:
     - name: Login to ECR
       id: ecr-login
       uses: aws-actions/amazon-ecr-login@v1
+
+    - name: Creating Docker Image
+      run: docker build -t ${{ vars.DOCKER_IMAGE }} .
+
+    - name: Tagging Image
+      run: docker tag ${{vars.DOCKER_IMAGE}}:latest ${{ vars.DOCKER_REPOSITORY }}:latest
+
+    - name: Pushing image
+      run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
