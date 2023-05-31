@@ -55,4 +55,4 @@ jobs:
         key: ${{ secrets.SSH_PRIVATE_KEY }}
         port: ${{ secrets.INSTANCE_PORT }}
         script: |
-          whereir docker-compose
+          whereis docker-compose
