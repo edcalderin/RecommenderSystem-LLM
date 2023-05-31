@@ -46,7 +46,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: SSH to EC2 instance and deploy
-      uses: appleboy/ssh-action@0.1.10
+      uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.INSTANCE_HOST }}
         username: ${{ secrets.INSTANCE_USER }}
