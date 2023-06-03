@@ -55,6 +55,7 @@ jobs:
       run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
 
   continuous-deployment:
+    needs: [continuous-delivery]
     runs-on: ubuntu-latest
     steps:
     - name: Configure AWS credentials
