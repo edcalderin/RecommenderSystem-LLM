@@ -45,14 +45,14 @@ jobs:
       id: ecr-login
       uses: aws-actions/amazon-ecr-login@v1
 
-    - name: Creating Docker Image
-      run: docker build -t ${{ secrets.DOCKER_IMAGE }} .
+    #- name: Creating Docker Image
+    #  run: docker build -t ${{ secrets.DOCKER_IMAGE }} .
 
-    - name: Tagging Image
-      run: docker tag ${{secrets.DOCKER_IMAGE}}:latest ${{ secrets.DOCKER_REPOSITORY }}:latest
+    #- name: Tagging Image
+    #  run: docker tag ${{secrets.DOCKER_IMAGE}}:latest ${{ secrets.DOCKER_REPOSITORY }}:latest
 
-    - name: Pushing image
-      run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
+    #- name: Pushing image
+    #  run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
 
   continuous-deployment:
     needs: [continuous-delivery]
@@ -69,7 +69,7 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Pull latest image
-      run: docker pull ${{secrets.DOCKER_REPOSITORY}}/${{secrets.DOCKER_IMAGE}}:latest
+      run: docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
 
     - name: Run Docker Image
       run: docker run -d -p 8000:8000 ${{secrets.DOCKER_REPOSITORY}}/${{secrets.DOCKER_IMAGE}}:latest
