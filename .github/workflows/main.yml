@@ -66,11 +66,13 @@ jobs:
         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
     - name: Login to ECR
-      id: ecr-login
-      uses: aws-actions/configure-aws-credentials@v2
+      uses: aws-actions/amazon-ecr-login@v1
 
     - name: Pull latest image
       run: docker pull ${{secrets.DOCKER_REPOSITORY}}/${{secrets.DOCKER_IMAGE}}:latest
 
     - name: Run Docker Image
-      run: docker run
+      run: docker run -d -p 8000:8000 ${{secrets.DOCKER_REPOSITORY}}/${{secrets.DOCKER_IMAGE}}:latest
+
+    - name: Clean previous images and containers
+      run: docker system prune -f
