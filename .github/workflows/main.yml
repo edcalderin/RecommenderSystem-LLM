@@ -66,6 +66,7 @@ jobs:
         aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
 
     - name: Login to ECR
+      id: ecr-login
       uses: aws-actions/configure-aws-credentials@v2
 
     - name: Pull latest image
