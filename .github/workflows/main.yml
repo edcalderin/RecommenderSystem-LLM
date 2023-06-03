@@ -72,7 +72,7 @@ jobs:
       run: docker pull ${{ secrets.DOCKER_REPOSITORY }}:latest
 
     - name: Run Docker Image
-      run: docker run -d -p 8000:8000 ${{secrets.DOCKER_REPOSITORY}}/${{secrets.DOCKER_IMAGE}}:latest
+      run: docker run -d -p 8000:8000 ${{ secrets.DOCKER_REPOSITORY }}:latest
 
     - name: Clean previous images and containers
       run: docker system prune -f
