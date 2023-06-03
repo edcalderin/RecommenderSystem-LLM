@@ -25,7 +25,7 @@ jobs:
     - name: Run tests and lint
       run: tox
 
-  continuous-deployment:
+  continuous-delivery:
     runs-on: ubuntu-latest
     needs: [continuous-integration]
 
@@ -46,10 +46,29 @@ jobs:
       uses: aws-actions/amazon-ecr-login@v1
 
     - name: Creating Docker Image
-      run: docker build -t ${{ vars.DOCKER_IMAGE }} .
+      run: docker build -t ${{ secrets.DOCKER_IMAGE }} .
 
     - name: Tagging Image
-      run: docker tag ${{vars.DOCKER_IMAGE}}:latest ${{ vars.DOCKER_REPOSITORY }}:latest
+      run: docker tag ${{secrets.DOCKER_IMAGE}}:latest ${{ secrets.DOCKER_REPOSITORY }}:latest
 
     - name: Pushing image
-      run: docker push ${{ vars.DOCKER_REPOSITORY }}:latest
+      run: docker push ${{ secrets.DOCKER_REPOSITORY }}:latest
+
+  continuous-deployment:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: ${{ secrets.AWS_DEFAULT_REGION }}
+
+    - name: Login to ECR
+      uses: aws-actions/configure-aws-credentials@v2
+
+    - name: Pull latest image
+      run: docker pull ${{secrets.DOCKER_REPOSITORY}}/${{secrets.DOCKER_IMAGE}}:latest
+
+    - name: Run Docker Image
+      run: docker run
