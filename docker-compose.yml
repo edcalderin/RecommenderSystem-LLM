@@ -5,6 +5,16 @@ services:
     build: .
     env_file:
       - .env
+    environment:
+      - name=value
+      - MONGO_DB = recommender_db
+      - MONGO_PORT = 27017
+      - MONGO_HOST = mongodb
+
+      - APP_HOST = 0.0.0.0
+      - APP_PORT = 8000
+
+      - PYTHONPATH= .
     ports:
       - 8000:8000
     depends_on:
