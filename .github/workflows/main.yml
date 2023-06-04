@@ -59,6 +59,9 @@ jobs:
     needs: [continuous-delivery]
     runs-on: self-hosted
     steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
       with:
