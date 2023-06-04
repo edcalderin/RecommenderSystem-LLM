@@ -6,6 +6,7 @@ on:
     - master
 
 jobs:
+
   continuous-integration:
     runs-on: ubuntu-latest
     steps:
@@ -56,7 +57,7 @@ jobs:
 
   continuous-deployment:
     needs: [continuous-delivery]
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     steps:
     - name: Configure AWS credentials
       uses: aws-actions/configure-aws-credentials@v2
